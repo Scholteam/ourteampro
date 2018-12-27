@@ -1,0 +1,23 @@
+@keyframes ran {
+                from {
+                    backgroud-position: 0 0;
+                }
+                to {
+                    background-position: 2000px 0;
+                }
+            }
+            #logo {
+                font-weight: 600px;
+                font-size: 100px;
+                font-family: "楷体";
+                color: #8c888b;
+                background: -webkit-linear-gradient(45deg, gray,white);
+                -moz-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
+                -ms-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5);
+                color: transparent;
+                /*����������ɫ͸��*/
+                -webkit-background-clip: text;
+                /*�����ü�Ϊ�ı���ʽ*/
+                animation: ran 10s linear infinite;
+                /*��̬10sչʾ*/
+            }
