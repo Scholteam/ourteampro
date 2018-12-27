@@ -43,9 +43,9 @@
 					} else if(data=="pwderror"){
 						alert("密码错误不正确");
 					} else if(data=="notdig"){
-						alert("学号有非法字符");
+						alert("教师号有非法字符");
 					}  else {
-						alert("该学号已存在");
+						alert("该教师号已存在");
 					}
 				}
 			})

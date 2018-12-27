@@ -11,11 +11,18 @@
 <body>
 <div style="width: 100%;text-align: center;">
 	<c:if test="${sessionScope.snum==null}">
-		<a href="register.jsp">Register</a><br/>
-		<a href="studentlogin.jsp">Login</a>
+		<c:if test="${sessionScope.tnum==null}">
+			<a href="register.jsp">学生注册</a><br/>
+			<a href="studentlogin.jsp">学生登陆</a><br/>
+			<a href="teacherregister.jsp">教师注册</a><br/>
+			<a href="teacherlogin.jsp">教师登陆</a>
+		</c:if>
 	</c:if>
 	<c:if test="${sessionScope.snum!=null}">
 		欢迎<a href="AffirmStuInfoController.mvc" >${sessionScope.snum}</a>登陆
+	</c:if>
+	<c:if test="${sessionScope.tnum!=null}">
+		欢迎<a href="AffirmStuInfoController.mvc" >${sessionScope.tnum}</a>登陆
 	</c:if>
 
 </div>

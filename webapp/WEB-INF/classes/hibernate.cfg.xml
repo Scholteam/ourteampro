@@ -40,7 +40,7 @@
 	<!-- 3.映射文件路径 -->
 	<mapping resource="com/niit/entity/Student.hbm.xml" />
 	<mapping resource="com/niit/entity/StudentInfo.hbm.xml" />
-
+	<mapping resource="com/niit/entity/Teacher.hbm.xml" />
 </session-factory>
 
 </hibernate-configuration>
