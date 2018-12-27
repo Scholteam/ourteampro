@@ -8,6 +8,12 @@
 <script src="js/jquery.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/ProvinceandTown.js"></script>
+<link rel="stylesheet" href="css/style.default.css" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+<script type="text/javascript"
+	src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/custom/general.js"></script>
 <script type="text/javascript">
 	function create() {
 		var sigender = document.getElementById("sigender").value;
@@ -58,7 +64,7 @@
 					if (data == "success") {
 						alert("请插入照片");
 						top.location = "studentphoto.jsp";
-					} else if(data=="carderror"){
+					} else if (data == "carderror") {
 						alert("身份证格式不正确");
 					} else {
 						alert("验证码输入错误");
@@ -83,9 +89,9 @@
 				success : function(data) {
 					if (data == "success") {
 						alert("发送成功");
-					} else if(data == "failure") {
+					} else if (data == "failure") {
 						alert("有非法字符");
-					} else{
+					} else {
 						alert("未知错误");
 					}
 				}
@@ -111,40 +117,171 @@
 	}
 </script>
 </head>
-<body>
-	<div style="width: 100%; text-align: center;">
-		${sessionScope.snum}<br />
-		<form method="post">
-			性别:  <input type="radio" id="sigender" name="sigender"
-				value="男">男 <input type="radio" id="sigender"
-				name="sigender" value="女">女 <br /> 民族:<select
-				id="sination" name="sination">
-				<option value="汉族">汉族</option>
-				<option value="苗族">苗族</option>
-				<option value="壮族">壮族</option>
-				<option value="回族">回族</option>
-			</select> <br />学院: <select id="siacademy" name="siacademy">
-				<option value="计算机学院">计算机学院</option>
-				<option value="纺织学院">纺织学院</option>
-				<option value="数学学院">数学学院</option>
-				<option value="汉语学院">汉语学院</option>
-			</select> <br />专业: <select id="simajor" name="simajor">
-				<option value="软件工程">软件工程</option>
-				<option value="纺织">纺织学院</option>
-				<option value="数学">数学学院</option>
-				<option value="汉语">汉语学院</option>
-			</select><br /> 手机号: <input id="sitel" name="sitel" type="text"
-				placeholder="请输入你的手机号"> <br />手机验证码: <input id="sitelcheck"
-				name="sitelcheck" type="text" placeholder="请输入你的手机号"><br />
-			省市:<select id="province" name="province"></select>
-    			<select id="city" name="city"></select><br/>
-    		详细地址:	<input id="siaddress"
-				name="siaddress" type="text" placeholder="请输入你的详细地址" style="width: 250px;"><br/>
-			身份证:	<input id="siidcard"
-				name="siidcard" type="text" placeholder="请输入你的身份证"><br/>
-			<input type="button" value="提交" onclick="create()">
-		</form>
-		<input type="button" onclick="dd()" id="btn" value="请获取验证码">
-	</div>
+<body class="withvernav">
+
+	<div class="bodywrapper">
+		<div class="topheader">
+			<div class="left">
+				<h1 class="logo">
+					Jiao<span>Wu</span>
+				</h1>
+				<span class="slogan">教务管理系统</span>
+
+				<div class="search">
+					<form action="" method="post">
+						<input type="text" name="keyword" id="keyword" value="输入关键词" />
+						<button class="submitbutton"></button>
+					</form>
+				</div>
+				<!--search-->
+
+				<br clear="all" />
+
+			</div>
+			<!--left-->
+
+			<div class="right">
+				<div class="userinfo">
+					<span>${sessionScope.snum}</span>
+				</div>
+				<!--userinfo-->
+
+				<div class="userinfodrop">
+					<div class="userdata">
+						<h4>${sessionScope.snum}</h4>
+						<span class="email"></span>
+						<ul>
+							<li><a href="">首页</a></li>
+							<li><a href="">我的信息</a></li>
+							<li><a href="">教学运行公告</a></li>
+							<li><a href="">退出</a></li>
+						</ul>
+					</div>
+					<!--userdata-->
+				</div>
+				<!--userinfodrop-->
+			</div>
+			<!--right-->
+		</div>
+		<!--topheader-->
+
+
+		<div class="header">
+			<ul class="headermenu">
+				<li><a href=""><span class="icon icon-flatscreen"></span>界面</a></li>
+				<li><a href=""><span class="icon icon-pencil"></span>教学通知</a></li>
+				<li><a href=""><span class="icon icon-message"></span>使用说明</a></li>
+			</ul>
+
+			<div class="headerwidget">
+				<div class="earnings">
+					<div class="one_half">
+						<h4>今天的 日期是</h4>
+						<h3>
+							<script type="text/javascript">
+								today = new Date();
+								document.write(today.getFullYear(), ".", "",
+										today.getMonth() + 1, ".", "", today
+												.getDate(), "");
+								var week = today.getDay();
+								document.write(getWeek(week));
+								function getWeek(week) {
+									if (week == 0)
+										return "星期日";
+									if (week == 1)
+										return "星期一";
+									if (week == 2)
+										return "星期二";
+									if (week == 3)
+										return "星期三";
+									if (week == 4)
+										return "星期四";
+									if (week == 5)
+										return "星期五";
+									if (week == 6)
+										return "星期六";
+								}
+							</script>
+						</h3>
+					</div>
+					<!--one_half-->
+					<div class="one_half last alignright">
+						<h4>访问次数:</h4>
+						<h3>
+							<script type="text/javascript">
+								if (localStorage.pagecount) {
+									localStorage.pagecount = Number(localStorage.pagecount) + 1;
+								} else {
+									localStorage.pagecount = 1;
+								}
+								document.write(localStorage.pagecount + "次");
+							</script>
+						</h3>
+					</div>
+					<!--one_half last-->
+				</div>
+				<!--earnings-->
+			</div>
+			<!--headerwidget-->
+
+		</div>
+		<!--header-->
+
+		<div class="vernav2 iconmenu">
+			<ul>
+				<!--当li 的 class="current" 时即 该选项被选择-->
+				<li><a href="">教学计划管理</a></li>
+				<li><a href="">修改密码</a></li>
+				<li><a href="">学籍信息</a></li>
+				<li><a href="">本学期课表</a></li>
+				<li><a href="">学生选课</a></li>
+				<li><a href="#">个人成绩查询</a> <span class="arrow"></span>
+					<ul id="error">
+						<li><a href="">课程成绩</a></li>
+						<li><a href="">成绩审查</a></li>
+						<li><a href="">修读进程</a></li>
+						<li><a href="">不及格考试次数</a></li>
+					</ul></li>
+			</ul>
+			<a class="togglemenu"></a> <br /> <br />
+		</div>
+		<!--leftmenu-->
+
+		<div style="position: absolute;top: 200px;left: 600px	">
+			<form method="post">
+				性别: <input type="radio" id="sigender" name="sigender" value="男">男
+				<input type="radio" id="sigender" name="sigender" value="女">女
+				<br /> 民族:<select id="sination" name="sination">
+					<option value="汉族">汉族</option>
+					<option value="苗族">苗族</option>
+					<option value="壮族">壮族</option>
+					<option value="回族">回族</option>
+				</select> <br />学院: <select id="siacademy" name="siacademy">
+					<option value="计算机学院">计算机学院</option>
+					<option value="纺织学院">纺织学院</option>
+					<option value="数学学院">数学学院</option>
+					<option value="汉语学院">汉语学院</option>
+				</select> <br />专业: <select id="simajor" name="simajor">
+					<option value="软件工程">软件工程</option>
+					<option value="纺织">纺织学院</option>
+					<option value="数学">数学学院</option>
+					<option value="汉语">汉语学院</option>
+				</select><br /> 手机号: <input id="sitel" name="sitel" type="text"
+					placeholder="请输入你的手机号" style="width: 160px"> <br />手机验证码: <input
+					id="sitelcheck" name="sitelcheck" type="text"
+					placeholder="请输入你的手机验证码" style="width: 160px"><input type="button" onclick="dd()" id="btn" value="请获取验证码"><br /> 省市:<select id="province"
+					name="province"></select> <select id="city" name="city"></select><br />
+				详细地址: <input id="siaddress" name="siaddress" type="text"
+					placeholder="请输入你的详细地址" style="width: 250px;"><br /> 身份证:
+				<input id="siidcard" name="siidcard" type="text"
+					placeholder="请输入你的身份证" style="width: 250px;"><br /> <hr /> <input type="button"
+					value="提交" onclick="create()">
+			</form>
+			
+			</div>
+
+
+		</div>
+		<!-- centercontent -->
 </body>
 </html>

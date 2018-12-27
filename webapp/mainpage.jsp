@@ -22,7 +22,7 @@
 		欢迎<a href="AffirmStuInfoController.mvc" >${sessionScope.snum}</a>登陆
 	</c:if>
 	<c:if test="${sessionScope.tnum!=null}">
-		欢迎<a href="AffirmStuInfoController.mvc" >${sessionScope.tnum}</a>登陆
+		欢迎<a href="#" >${sessionScope.tnum}</a>登陆
 	</c:if>
 
 </div>
