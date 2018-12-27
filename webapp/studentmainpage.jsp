@@ -29,7 +29,7 @@
 					alert("已成功生成课表");
 					top.location = "studentmainpage.jsp";
 				} else {
-					alert("已存在课表,请点击查看");
+					alert("已存在课表");
 				}
 			}
 		})
