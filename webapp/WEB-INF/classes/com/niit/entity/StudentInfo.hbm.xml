@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <!--  name:对应持久化类  table:对应持久化类对应的数据库表 -->
+	<class name="com.niit.entity.StudentInfo" table="sinfo">
+	    <!-- 当数据库表的字段和持久化类的属性名称相同时，column可以省略不写 -->
+	    <!-- id主键的专用 -->
+		<id name="SIid" column="SIid">
+		    <!-- native自增长策略 -->
+			<generator class="native"></generator>
+		</id>
+		<!--除了主键，其他字段均使用property-->
+		<property name="SInum"/>
+		<property name="SItel"/>
+		<property name="SIgender"/>
+		<property name="SInation"/>
+		<property name="SIacademy"/>
+		<property name="SImajor"/>
+		<property name="SIprovince"/>
+		<property name="SItown"/>
+		<property name="SIaddress"/>
+		<property name="SIidcard"/>
+	</class>
+</hibernate-mapping>
+
