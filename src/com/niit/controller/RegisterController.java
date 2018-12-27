@@ -28,7 +28,7 @@ public class RegisterController {
 		stu = (List<Student>) session.getAttribute("studentlist");
 		int a = 0;
 		for(int i = 0;i<stu.size();i++){
-			if(stu.get(i).getSnum()==Integer.valueOf(snum).intValue()){
+			if(stu.get(i).getSnum()==Integer.valueOf(snum).intValue()) {
 				a = 1;
 			}
 			System.out.println("——+——+——+——"+a);
