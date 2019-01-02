@@ -129,7 +129,7 @@
 					</div>
 					<div class="bd">
 						<ul class="infoList">
-							<li><a href="">青岛大学学士学位授予工作补充规定 </a><span class="date">2018-12-20</span></li>
+							<li><a href="">学士学位授予工作补充规定 </a><span class="date">2018-12-20</span></li>
 							<li><a href="">关于开展2018年新入职教师教学能力培训的通知</a><span class="date">2018-12-14</span></li>
 							<li><a href="">关于召开2018年秋季学期期末本科教学工作会议的通知</a><span class="date">2018-12-11</span></li>
 							<li><a href="">关于教务维护的通知</a><span class="date">2018-12-03</span></li>
