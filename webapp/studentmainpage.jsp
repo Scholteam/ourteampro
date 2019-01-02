@@ -22,14 +22,36 @@
 			url : "CreateStuClassController.mvc",
 			contentType : "application/x-www-form-urlencoded",
 			data : {
-				"check" : a,
+				"check" : check,
 			},
 			success : function(data) {
 				if (data == "success") {
 					alert("已成功生成课表");
 					top.location = "studentmainpage.jsp";
-				} else {
+				} else if(data == "existclass") {
 					alert("已存在课表");
+				} else{
+					alert("请先完善个人信息");
+				}
+			}
+		})
+	}
+	
+	function searchclass() {
+		var search = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "SearchStuClassController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"search" : search,
+			},
+			success : function(data) {
+				if (data == "success") {
+					top.location = "searchstuclass.jsp";
+				}else{
+					alert("请先生成课表");
 				}
 			}
 		})
@@ -69,10 +91,14 @@
 						<h4>${sessionScope.snum}</h4>
 						<span class="email"></span>
 						<ul>
-							<li><a href="">首页</a></li>
-							<li><a href="">我的信息</a></li>
+							<li><a href="mainpage.jsp">首页</a></li>
+							<li><c:if test="${sessionScope.realexistinfo==0}">
+						<a href="writeinfo.jsp">填写详细信息</a>
+					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
+						<a href="searchstuinfo.jsp">查看个人信息</a>
+					</c:if></li>
 							<li><a href="">教学运行公告</a></li>
-							<li><a href="">退出</a></li>
+							<li><a href="PeopleSignOutController.mvc">退出</a></li>
 						</ul>
 					</div>
 					<!--userdata-->
@@ -86,9 +112,8 @@
 
 		<div class="header">
 			<ul class="headermenu">
-				<li><a href=""><span class="icon icon-flatscreen"></span>界面</a></li>
+				<li><a href="studentmainpage.jsp"><span class="icon icon-flatscreen"></span>界面</a></li>
 				<li><a href=""><span class="icon icon-pencil"></span>教学通知</a></li>
-				<li><a href=""><span class="icon icon-message"></span>使用说明</a></li>
 			</ul>
 
 			<div class="headerwidget">
@@ -148,23 +173,15 @@
 		<div class="vernav2 iconmenu">
 			<ul>
 				<!--当li 的 class="current" 时即 该选项被选择-->
-				<li><a href="" class="editor">教学计划管理</a></li>
-				<li><a href="" class="elements">修改密码</a></li>
+				<li><a href="#" class="editor">教学计划管理</a></li>
 				<li><c:if test="${sessionScope.realexistinfo==0}">
 						<a href="writeinfo.jsp">填写详细信息</a>
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
 						<a href="searchstuinfo.jsp">查看个人信息</a>
 					</c:if></li>
-				<li><a href="" class="support">本学期课表</a></li>
+				<li><a href="javascript:void(0);" onclick="searchclass()">查看本学期课表</a></li>
 				<li><a href="javascript:void(0);" onclick="createclass()">学生创建课表</a></li>
-				<li><a href="#error" class="error">个人成绩查询</a> <span
-					class="arrow"></span>
-					<ul id="error">
-						<li><a href="">课程成绩</a></li>
-						<li><a href="">成绩审查</a></li>
-						<li><a href="">修读进程</a></li>
-						<li><a href="">不及格考试次数</a></li>
-					</ul></li>
+				<li><a href="StudentLookGradeController.mvc" class="edit">个人成绩查询</a></li>
 			</ul>
 			<a class="togglemenu"></a> <br /> <br />
 		</div>

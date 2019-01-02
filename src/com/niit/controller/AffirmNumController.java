@@ -19,6 +19,8 @@ import com.niit.entity.Student;
 @Controller
 public class AffirmNumController {
 
+	@Autowired
+	private IStudentBiz StudentBiz;
 	@RequestMapping(value = "/AffirmNumController.mvc")
 	@ResponseBody
 	public String search(String snum, HttpSession session) {
@@ -28,7 +30,7 @@ public class AffirmNumController {
 		boolean dig = false;
 		List<Student> sl = new ArrayList<Student>();
 		Student student = new Student();
-		sl = (List<Student>) session.getAttribute("studentlist");
+		sl = StudentBiz.findAll();
 		System.out.println(sl.get(0).getSnum());
 		dig = pattern.matcher(snum).matches();
 		if (dig == false) {

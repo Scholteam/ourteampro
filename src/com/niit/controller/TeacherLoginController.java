@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.niit.biz.IStudentBiz;
+import com.niit.biz.IStudentInfoBiz;
+import com.niit.biz.ITeacherBiz;
 import com.niit.entity.Student;
 import com.niit.entity.Teacher;
 
 @Controller
 public class TeacherLoginController {
 
+	@Autowired
+	private ITeacherBiz teacherBiz;
 	@RequestMapping(value = "/TeacherLoginController.mvc")
 	@ResponseBody
 	public String search(String tnum,String tpassword,String tcheck, HttpSession session) {
@@ -27,7 +31,7 @@ public class TeacherLoginController {
 		boolean dig = false;
 		List<Teacher> tc = new ArrayList<Teacher>();
 		Teacher teacher = new Teacher();
-		tc = (List<Teacher>) session.getAttribute("teacherlist");
+		tc = teacherBiz.findAll();
 		System.out.println(tc.get(0).getTnum());
 		dig = pattern.matcher(tnum).matches();
 		if (dig == false) {

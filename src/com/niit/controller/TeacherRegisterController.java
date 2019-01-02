@@ -32,7 +32,7 @@ public class TeacherRegisterController {
 		boolean dig = false;
 		List<Teacher> te = new ArrayList<Teacher>();
 		Teacher teacher = new Teacher();
-		te = (List<Teacher>) session.getAttribute("teacherlist");
+		te = TeacherBiz.findAll();
 		dig = pattern.matcher(tnum).matches();
 		if (dig == false) {
 			return "notdig";
@@ -43,6 +43,7 @@ public class TeacherRegisterController {
 					a=1;
 				}
 			}
+			System.out.println("123123+"+a);
 			if(a==1){
 				return "exist";
 			}else if(retpassword.equals(tpassword)){

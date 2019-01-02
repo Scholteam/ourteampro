@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <script src="js/jquery.js"></script>
 <script type="text/javascript">
+	function tr() {
+		top.location = "teacherregister.jsp";
+	}
 	function login11() {
 		var tnum = document.getElementById("tnum").value;
 		var tpassword = document.getElementById("tpassword").value;
@@ -30,12 +33,12 @@
 				},
 				success : function(data) {
 					if (data == "success") {
-						top.location="mainpage.jsp";
-					} else if(data=="poterror"){
+						top.location = "index.jsp";
+					} else if (data == "poterror") {
 						alert("密码或教师号错误");
-					} else if(data=="notdig"){
+					} else if (data == "notdig") {
 						alert("教师号有非法字符");
-					}  else {
+					} else {
 						alert("验证码输入错误");
 					}
 				}
@@ -45,23 +48,26 @@
 </script>
 </head>
 <body>
-<div class="container">
+	<div class="container">
 		<form class="login-form">
 			<div class="title">教师登陆</div>
 			<div class="form-group">
-				<label for="username">教师登陆</label>
-				<input type="text" class="form-control" name="tnum" id="tnum" placeholder="请输入教师号">
+				<label for="username">教师登陆</label> <input type="text"
+					class="form-control" name="tnum" id="tnum" placeholder="请输入教师号">
 			</div>
 			<div class="form-group">
-				<label for="password">登录密码</label>
-				<input type="password" class="form-control" id="tpassword" name="tpassword" placeholder="请输入登录密码">
+				<label for="password">登录密码</label> <input type="password"
+					class="form-control" id="tpassword" name="tpassword"
+					placeholder="请输入登录密码">
 			</div>
-			验证码输入:<input type="text" class="form-control" id="tcheck" name="tcheck" placeholder="请输入登录密码">
-					<img id="pin" src="<%=request.getContextPath()%>/PIN.mvc" style="height: 30px;"><br/>
-			<input type="button" value="登陆" onclick="login11()"  >
+			验证码输入:<input type="text" class="form-control" id="tcheck"
+				name="tcheck" placeholder="请输入登录密码"> <img id="pin"
+				src="<%=request.getContextPath()%>/PIN.mvc" style="height: 30px;"><br />
+			<input type="button" value="登陆" onclick="login11()">
 			<div class="footer">&copy; 2019 Education System</div>
 		</form>
 	</div>
+	<button onclick="tr()">注册</button>
 
 </body>
 </html>

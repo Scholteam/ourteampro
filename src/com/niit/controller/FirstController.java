@@ -46,6 +46,6 @@ public class FirstController {
 		session.setAttribute("studentinfolist", studentinfolist);
 		session.setAttribute("teacherlist", teacherlist);
 		session.setAttribute("stuclasslist", stuclasslist);
-		return "mainpage.jsp";
+		return "index.jsp";
 	}
 }

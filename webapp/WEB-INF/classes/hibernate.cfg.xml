@@ -41,6 +41,8 @@
 	<mapping resource="com/niit/entity/Student.hbm.xml" />
 	<mapping resource="com/niit/entity/StudentInfo.hbm.xml" />
 	<mapping resource="com/niit/entity/Teacher.hbm.xml" />
+	<mapping resource="com/niit/entity/StudentClass.hbm.xml" />
+	<mapping resource="com/niit/entity/StudentGrade.hbm.xml" />
 </session-factory>
 
 </hibernate-configuration>

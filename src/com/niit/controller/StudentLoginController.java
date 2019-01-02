@@ -14,10 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.niit.biz.IStudentBiz;
+import com.niit.biz.IStudentClassBiz;
+import com.niit.biz.impl.StudentBiz;
 import com.niit.entity.Student;
+import com.niit.entity.Teacher;
 
+@Service
 @Controller
 public class StudentLoginController {
+	@Autowired
+	private IStudentBiz studentBiz;
 
 	@RequestMapping(value = "/StudentLoginController.mvc")
 	@ResponseBody
@@ -25,7 +31,7 @@ public class StudentLoginController {
 		Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
 		boolean dig = false;
 		List<Student> student = new ArrayList<Student>();
-		student = (List<Student>) session.getAttribute("studentlist");
+		student = studentBiz.findAll();
 		if (snum.equals("")) {
 			return "snumerror";
 		} else {

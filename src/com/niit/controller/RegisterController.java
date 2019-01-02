@@ -25,7 +25,7 @@ public class RegisterController {
 	public void register(String sname,String spassword,String repassword,String snum,HttpServletResponse response,HttpSession session) throws IOException {
 		Student student = new Student(); 
 		List<Student> stu = new ArrayList<Student>();
-		stu = (List<Student>) session.getAttribute("studentlist");
+		stu = StudentBiz.findAll();
 		int a = 0;
 		for(int i = 0;i<stu.size();i++){
 			if(stu.get(i).getSnum()==Integer.valueOf(snum).intValue()) {

@@ -39,7 +39,7 @@
 						alert("学号为非法字符");
 						top.location="studentlogin.jsp";
 					} else {
-						top.location="mainpage.jsp";
+						top.location="index.jsp";
 					}
 				}
 			})
