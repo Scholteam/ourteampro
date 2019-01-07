@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -86,17 +86,18 @@
 		<div class="content">
 			<div class="left_tab">
 				<div class="hd">
-					<ul><li class="first">学校新闻</li><li class="second">教师风采</li><li class="third">各专业新闻</li></ul>
+					<ul><li class="first">专业简介</li><li class="second">教师风采</li><li class="third">各专业新闻</li></ul>
 				</div>
 				<div class="bd">
 					<div class="box">
 						<a href="about1.html" class="more">MORE+</a>
 						<ul class="clearfix">
-							<li><a href="n2Detail.html"><img src="images/a1.jpg" /><h4>教务运行公告</h4><span class="date">2018-12-17</span></a></li>
-							<li><a href="nDetail.html"><img src="images/a2.jpg" /><h4>聆听2014级的毕业心声</h4><span class="date">2018-12-11</span></a></li>
+							<li><a href=""><img src="images/a1.jpg" /><h4>外语学院全体教师宣讲大会</h4><span class="date">2018-12-17</span></a></li>
+							<li><a href=""><img src="images/a2.jpg" /><h4>XXX名师演讲</h4><span class="date">2018-12-11</span></a></li>
 							<li><a href=""><img src="images/a3.jpg" /><h4>预期授课会议</h4><span class="date">2018-12-01</span></a></li>
 							<li><a href=""><img src="images/a4.jpg" /><h4>校领导视察会议</h4><span class="date">2018-11-25</span></a></li>
 							<li><a href=""><img src="images/a5.jpg" /><h4>学校宣讲会</h4><span class="date">2018-11-20</span></a></li>
+							<li><a href=""><img src="images/a6.jpg" /><h4>校方合作文件</h4><span class="date">2018-11-12</span></a></li>
 						</ul>
 					</div>
 					<div class="box">
@@ -110,7 +111,7 @@
 					<div class="box">
 						<a href="news.html" class="more">MORE+</a>
 						<ul class="clearfix">
-							<li><a href="rDetail"><img src="images/n1.jpg" /><h4>2017级外语学院新生入学</h4><span class="date">2018-12-20</span></a></li>
+							<li><a href=""><img src="images/n1.jpg" /><h4>标准化学院研讨会合影</h4><span class="date">2018-12-20</span></a></li>
 							<li><a href=""><img src="images/n2.jpg" /><h4>体育学院地市级运动会</h4><span class="date">2018-12-02</span></a></li>
 							<li><a href=""><img src="images/n3.jpg" /><h4>医学院临床实习</h4><span class="date">2018-11-29</span></a></li>
 							<li><a href=""><img src="images/n4.jpg" /><h4>软件工程学院XX公司宣讲会</h4><span class="date">2018-11-02</span></a></li>
@@ -128,7 +129,7 @@
 					</div>
 					<div class="bd">
 						<ul class="infoList">
-							<li><a href="">青岛大学学士学位授予工作补充规定 </a><span class="date">2018-12-20</span></li>
+							<li><a href="">学士学位授予工作补充规定 </a><span class="date">2018-12-20</span></li>
 							<li><a href="">关于开展2018年新入职教师教学能力培训的通知</a><span class="date">2018-12-14</span></li>
 							<li><a href="">关于召开2018年秋季学期期末本科教学工作会议的通知</a><span class="date">2018-12-11</span></li>
 							<li><a href="">关于教务维护的通知</a><span class="date">2018-12-03</span></li>
