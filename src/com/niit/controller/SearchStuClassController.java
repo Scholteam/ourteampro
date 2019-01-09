@@ -13,9 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.niit.biz.IStudentChooseClassBiz;
 import com.niit.biz.IStudentClassBiz;
 import com.niit.biz.IStudentInfoBiz;
 import com.niit.biz.ITeacherBiz;
+import com.niit.entity.Student;
+import com.niit.entity.StudentChooseClass;
 import com.niit.entity.StudentClass;
 import com.niit.entity.StudentInfo;
 import com.niit.entity.Teacher;
@@ -24,6 +27,8 @@ import com.niit.entity.Teacher;
 public class SearchStuClassController {
 	@Autowired
 	private ITeacherBiz teacherBiz;
+	@Autowired
+	private IStudentChooseClassBiz stuchooseclassBiz;
 
 	@RequestMapping(value = "/SearchStuClassController.mvc")
 	@ResponseBody
@@ -172,6 +177,24 @@ public class SearchStuClassController {
 				session.setAttribute("Fri910", timeFri);
 			}
 			System.out.println("龙111111111111111111232323");
+			List<StudentChooseClass> scclist = new ArrayList<StudentChooseClass>();
+			List<StudentChooseClass> thisscclist = new ArrayList<StudentChooseClass>();
+			scclist = stuchooseclassBiz.findAll();
+			int snum = (int) session.getAttribute("snum");
+			int cclass = 0;
+			for(int i = 0;i<scclist.size();i++){
+				if(scclist.get(i).getCCSnum()==snum){
+					cclass++;
+					thisscclist.add(scclist.get(i));
+				}
+			}
+			if(cclass==1){
+				session.setAttribute("cclass1", thisscclist.get(0));
+			}
+			if(cclass==2){
+				session.setAttribute("cclass1", thisscclist.get(0));
+				session.setAttribute("cclass2", thisscclist.get(1));
+			}
 			return "success";
 		}
 	}

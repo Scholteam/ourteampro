@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <!--  name:对应持久化类  table:对应持久化类对应的数据库表 -->
+	<class name="com.niit.entity.TeacherExchange" table="texchange">
+	    <!-- 当数据库表的字段和持久化类的属性名称相同时，column可以省略不写 -->
+	    <!-- id主键的专用 -->
+		<id name="TXId" column="TXId">
+		    <!-- native自增长策略 -->
+			<generator class="native"></generator>
+		</id>
+		<!--除了主键，其他字段均使用property-->
+		<property name="TXnum"/>
+		<property name="TXname"/>
+		<property name="TXword"/>
+	</class>
+</hibernate-mapping>
+

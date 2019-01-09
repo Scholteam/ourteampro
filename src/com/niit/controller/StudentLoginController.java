@@ -32,7 +32,8 @@ public class StudentLoginController {
 		boolean dig = false;
 		List<Student> student = new ArrayList<Student>();
 		student = studentBiz.findAll();
-		if (snum.equals("")) {
+		int num = snum.length();
+		if (snum.equals("")||num<2||num>10) {
 			return "snumerror";
 		} else {
 			dig = pattern.matcher(snum).matches();

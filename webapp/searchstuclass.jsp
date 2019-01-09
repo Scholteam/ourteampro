@@ -52,6 +52,50 @@
 		})
 	}
 	
+	function addvise() {
+		var asa = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "AddviseController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"asa" : asa,
+			},
+			success : function(data) {
+				if (data == "success") {
+					alert("恭喜您已完成评教，请继续浏览");
+				} else {
+					top.location = "studentaddvisetea.jsp";
+				}
+			}
+		})
+	}
+	
+	function chooseclass(){
+		var asa = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "SearchChooseClassController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"asa" : asa,
+			},
+			success : function(data) {
+				if (data == "success") {
+					top.location = "studentchooseclass.jsp";
+				} else if(data == "noinfo"){
+					alert("请先完善个人信息");
+				} else if(data == "noclass"){
+					alert("请先生成专业课课表");
+				}else{
+					alert("您已选完两门课程");
+				}
+			}
+		})
+	}
+	
 	function searchclass() {
 		var search = '';
 		$.ajax({
@@ -112,7 +156,7 @@
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
 						<a href="searchstuinfo.jsp">查看个人信息</a>
 					</c:if></li>
-							<li><a href="">教学运行公告</a></li>
+							<li><a href="n2Detail.html">教学运行公告</a></li>
 							<li><a href="PeopleSignOutController.mvc">退出</a></li>
 						</ul>
 					</div>
@@ -128,7 +172,7 @@
 		<div class="header">
 			<ul class="headermenu">
 				<li><a href="studentmainpage.jsp"><span class="icon icon-flatscreen"></span>界面</a></li>
-				<li><a href=""><span class="icon icon-pencil"></span>教学通知</a></li>
+				<li><a href="n2Detail.html"><span class="icon icon-pencil"></span>教学通知</a></li>
 			</ul>
 
 			<div class="headerwidget">
@@ -188,7 +232,7 @@
 		<div class="vernav2 iconmenu">
 			<ul>
 				<!--当li 的 class="current" 时即 该选项被选择-->
-				<li><a href="">教学计划管理</a></li>
+				<li><a href="n2Detail.html">教学计划管理</a></li>
 				<li><c:if test="${sessionScope.realexistinfo==0}">
 						<a href="writeinfo.jsp">填写详细信息</a>
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
@@ -197,6 +241,9 @@
 				<li><a href="javascript:void(0);" onclick="searchclass()">查看本学期课表</a></li>
 				<li><a href="javascript:void(0);" onclick="createclass()">学生创建课表</a></li>
 				<li><a href="StudentLookGradeController.mvc" class="edit">个人成绩查询</a></li>
+				<li><a href="javascript:void(0);" onclick="chooseclass()">个人选课</a></li>
+				<li><a href="javascript:void(0);" onclick="addvise()">评教</a></li>
+				<li><a href="StudentEXController.mvc" class="edit">学生交流</a></li>
 			</ul>
 			<a class="togglemenu"></a> <br />
 			<br />
@@ -211,6 +258,8 @@
     		<th style="width: 80px;">星期三</th>
     		<th style="width: 80px;">星期四</th>
     		<th style="width: 80px;">星期五</th>
+    		<th style="width: 80px;">星期六</th>
+    		<th style="width: 80px;">星期天</th>
   		</tr>
   		<tr>
     		<th>上午<br/>1,2节</th>
@@ -219,6 +268,22 @@
     		<th><c:if test="${sessionScope.Wed12!=null}">${sessionScope.WednesdayClass.tname}<br/>${sessionScope.WednesdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Thu12!=null}">${sessionScope.ThursdayClass.tname}<br/>${sessionScope.ThursdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Fri12!=null}">${sessionScope.FridayClass.tname}<br/>${sessionScope.FridayClass.tclass}</c:if></th>
+    		<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='12' && sessionScope.cclass1.CChooseday=='周六'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='12' && sessionScope.cclass2.CChooseday=='周六'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
+    		<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='12' && sessionScope.cclass1.CChooseday=='周天'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='12' && sessionScope.cclass2.CChooseday=='周天'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
   		</tr>
   		<tr>
     		<th>上午<br/>3,4节</th>
@@ -227,6 +292,22 @@
     		<th><c:if test="${sessionScope.Wed34!=null}">${sessionScope.WednesdayClass.tname}<br/>${sessionScope.WednesdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Thu34!=null}">${sessionScope.ThursdayClass.tname}<br/>${sessionScope.ThursdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Fri34!=null}">${sessionScope.FridayClass.tname}<br/>${sessionScope.FridayClass.tclass}</c:if></th>
+  			<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='34' && sessionScope.cclass1.CChooseday=='周六'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='34' && sessionScope.cclass2.CChooseday=='周六'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
+    		<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='34' && sessionScope.cclass1.CChooseday=='周天'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='34' && sessionScope.cclass2.CChooseday=='周天'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
   		</tr>
   		<tr>
     		<th>下午<br/>5,6节</th>
@@ -235,6 +316,22 @@
     		<th><c:if test="${sessionScope.Wed56!=null}">${sessionScope.WednesdayClass.tname}<br/>${sessionScope.WednesdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Thu56!=null}">${sessionScope.ThursdayClass.tname}<br/>${sessionScope.ThursdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Fri56!=null}">${sessionScope.FridayClass.tname}<br/>${sessionScope.FridayClass.tclass}</c:if></th>
+  			<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='56' && sessionScope.cclass1.CChooseday=='周六'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='56' && sessionScope.cclass2.CChooseday=='周六'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
+    		<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='56' && sessionScope.cclass1.CChooseday=='周天'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='56' && sessionScope.cclass2.CChooseday=='周天'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
   		</tr>
   		<tr>
     		<th>下午<br/>7,8节</th>
@@ -243,6 +340,22 @@
     		<th><c:if test="${sessionScope.Wed78!=null}">${sessionScope.WednesdayClass.tname}<br/>${sessionScope.WednesdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Thu78!=null}">${sessionScope.ThursdayClass.tname}<br/>${sessionScope.ThursdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Fri78!=null}">${sessionScope.FridayClass.tname}<br/>${sessionScope.FridayClass.tclass}</c:if></th>
+  			<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='78' && sessionScope.cclass1.CChooseday=='周六'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='78' && sessionScope.cclass2.CChooseday=='周六'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
+    		<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='78' && sessionScope.cclass1.CChooseday=='周天'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='78' && sessionScope.cclass2.CChooseday=='周天'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
   		</tr>
   		<tr>
     		<th>晚上<br/>9,10节</th>
@@ -251,6 +364,22 @@
     		<th><c:if test="${sessionScope.Wed910!=null}">${sessionScope.WednesdayClass.tname}<br/>${sessionScope.WednesdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Thu910!=null}">${sessionScope.ThursdayClass.tname}<br/>${sessionScope.ThursdayClass.tclass}</c:if></th>
     		<th><c:if test="${sessionScope.Fri910!=null}">${sessionScope.FridayClass.tname}<br/>${sessionScope.FridayClass.tclass}</c:if></th>
+  			<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='90' && sessionScope.cclass1.CChooseday=='周六'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='90' && sessionScope.cclass2.CChooseday=='周六'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
+    		<th>
+    			<c:if test="${sessionScope.cclass1!=null && sessionScope.cclass1.CChoosetime=='90' && sessionScope.cclass1.CChooseday=='周天'}">
+    				${sessionScope.cclass1.CChooseteacher}<br/>${sessionScope.cclass1.CChooseclass}
+    			</c:if>
+    			<c:if test="${sessionScope.cclass2!=null && sessionScope.cclass2.CChoosetime=='90' && sessionScope.cclass2.CChooseday=='周天'}">
+    				${sessionScope.cclass2.CChooseteacher}<br/>${sessionScope.cclass2.CChooseclass}
+    			</c:if>
+    		</th>
   		</tr>
 	</table>
 	<button class="excelButton" style="position: absolute;top: 500px;left: 500px">导出excel</button>

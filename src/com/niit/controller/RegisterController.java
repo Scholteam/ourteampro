@@ -34,7 +34,7 @@ public class RegisterController {
 			System.out.println("——+——+——+——"+a);
 		}
 		System.out.println("()()()"+a);
-		if(spassword.equals(repassword)&&sname!=null&&spassword!=null&&repassword!=null&&a==0){
+		if(sname.length()<10&&sname.length()>4&&spassword.equals(repassword)&&sname!=null&&spassword!=null&&repassword!=null&&a==0){
 					student.setSname(sname);
 					student.setSpassword(spassword);
 					student.setSnum(Integer.valueOf(snum).intValue());

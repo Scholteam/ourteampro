@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <!--  name:对应持久化类  table:对应持久化类对应的数据库表 -->
+	<class name="com.niit.entity.StudentChooseClass" table="chooseclass">
+	    <!-- 当数据库表的字段和持久化类的属性名称相同时，column可以省略不写 -->
+	    <!-- id主键的专用 -->
+		<id name="CCId" column="CCId">
+		    <!-- native自增长策略 -->
+			<generator class="native"></generator>
+		</id>
+		<!--除了主键，其他字段均使用property-->
+		<property name="CCSnum"/>
+		<property name="CChooseclass"/>
+		<property name="CChooseday"/>
+		<property name="CChoosetime"/>
+		<property name="CChooseteacher"/>
+	</class>
+</hibernate-mapping>
+

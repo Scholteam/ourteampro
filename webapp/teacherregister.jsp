@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>教务系统——教师注册</title>
+<!-- bootstrap —— 一个样式库 -->
+<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/public.css" rel="stylesheet">
+<link href="css/register.css" rel="stylesheet">
 <script src="js/jquery.js"></script>
 <script src="js/TeacherMajor.js"></script>
 <script type="text/javascript">
@@ -79,18 +83,17 @@
 					name="tname" id="tname" placeholder="请输入您的姓名">
 			</div>
 			<div class="form-group">
-				<label for="subject">教学课程</label> <select class="form-control"
-					name="tmajor" id="tmajor">
-				</select> <select class="form-control" name="tclass" id="tclass">
+				<label for="subject">教学课程</label> 
+				<select class="form-control" name="tmajor" id="tmajor"></select>
+				<select class="form-control" name="tclass" id="tclass">
 				</select>
 			</div>
-			<input type="button" value="提交" onclick="create()" id="register"
-				class="btn btn-default" ON>
+			<input type="button" value="提交" onclick="create()" id="register"class="btn btn-default" /><br/><br/><br/>
+			<input type="button" value="登陆" onclick="tl()" id="register" class="btn btn-default"/>
 			<div class="footer">&copy; 2019 Education System</div>
 		</form>
 	</div>
 	<br />
-	<button onclick="tl()">登陆</button>
 
 </body>
 </html>

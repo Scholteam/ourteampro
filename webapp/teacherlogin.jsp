@@ -4,7 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>教务系统——教师登陆</title>
+<!-- bootstrap —— 一个样式库 -->
+<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/public.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
 <script src="js/jquery.js"></script>
 <script type="text/javascript">
 	function tr() {
@@ -63,11 +67,11 @@
 			验证码输入:<input type="text" class="form-control" id="tcheck"
 				name="tcheck" placeholder="请输入登录密码"> <img id="pin"
 				src="<%=request.getContextPath()%>/PIN.mvc" style="height: 30px;"><br />
-			<input type="button" value="登陆" onclick="login11()">
+			<input type="button" class="btn btn-default" value="登陆" onclick="login11()"/><br/><br/><br/>
+			<input type="button" value="注册" onclick="tr()" class="btn btn-default"/>
 			<div class="footer">&copy; 2019 Education System</div>
 		</form>
 	</div>
-	<button onclick="tr()">注册</button>
 
 </body>
 </html>

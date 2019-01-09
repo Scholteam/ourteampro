@@ -76,7 +76,7 @@
 						<span class="email"></span>
 						<ul>
 							<li><a href="index.jsp">首页</a></li>
-							<li><a href="">教学运行公告</a></li>
+							<li><a href="n2Detail.html">教学运行公告</a></li>
 							<li><a href="PeopleSignOutController.mvc">退出</a></li>
 						</ul>
 					</div>
@@ -93,7 +93,7 @@
 			<ul class="headermenu">
 				<li><a href="teachermainpage.jsp"><span
 						class="icon icon-flatscreen"></span>界面</a></li>
-				<li><a href=""><span class="icon icon-pencil"></span>教学通知</a></li>
+				<li><a href="n2Detail.html"><span class="icon icon-pencil"></span>教学通知</a></li>
 			</ul>
 
 			<div class="headerwidget">
@@ -153,9 +153,11 @@
 		<div class="vernav2 iconmenu">
 			<ul>
 				<!--当li 的 class="current" 时即 该选项被选择-->
-				<li><a href="#" class="editor">教学计划管理</a></li>
+				<li><a href="n2Detail.html" class="editor">教学计划管理</a></li>
 				<li><a href="TeacherSeeStuGradeController.mvc" class="editor">查看学生成绩</a></li>
 				<li><a href="TeacherChangeStuPswController.mvc" class="editor">修改学生密码</a></li>
+				<li><a href="TeacherChangeStuInfoController.mvc" class="editor">修改学生信息</a></li>
+				<li><a href="TeacherEXController.mvc" class="editor">教师交流</a></li>
 			</ul>
 			<a class="togglemenu"></a> <br /> <br />
 		</div>

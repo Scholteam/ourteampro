@@ -40,6 +40,50 @@
 		})
 	}
 	
+	function addvise() {
+		var asa = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "AddviseController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"asa" : asa,
+			},
+			success : function(data) {
+				if (data == "success") {
+					alert("恭喜您已完成评教，请继续浏览");
+				} else {
+					top.location = "studentaddvisetea.jsp";
+				}
+			}
+		})
+	}
+	
+	function chooseclass(){
+		var asa = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "SearchChooseClassController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"asa" : asa,
+			},
+			success : function(data) {
+				if (data == "success") {
+					top.location = "studentchooseclass.jsp";
+				} else if(data == "noinfo"){
+					alert("请先完善个人信息");
+				} else if(data == "noclass"){
+					alert("请先生成专业课课表");
+				}else{
+					alert("您已选完两门课程");
+				}
+			}
+		})
+	}
+	
 	function searchclass() {
 		var search = '';
 		$.ajax({
@@ -62,7 +106,7 @@
 </script>
 <script type="text/javascript">
 	function create() {
-		var sigender = document.getElementById("sigender").value;
+		var sigender = $('input[name="sigender"]:checked').val();
 		var sination = document.getElementById("sination").value;
 		var siacademy = document.getElementById("siacademy").value;
 		var simajor = document.getElementById("simajor").value;
@@ -203,7 +247,7 @@
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
 						<a href="searchstuinfo.jsp">查看个人信息</a>
 					</c:if></li>
-							<li><a href="">教学运行公告</a></li>
+							<li><a href="n2Detail.html">教学运行公告</a></li>
 							<li><a href="PeopleSignOutController.mvc">退出</a></li>
 						</ul>
 					</div>
@@ -219,7 +263,7 @@
 		<div class="header">
 			<ul class="headermenu">
 				<li><a href="studentmainpage.jsp"><span class="icon icon-flatscreen"></span>界面</a></li>
-				<li><a href=""><span class="icon icon-pencil"></span>教学通知</a></li>
+				<li><a href="n2Detail.html"><span class="icon icon-pencil"></span>教学通知</a></li>
 			</ul>
 
 			<div class="headerwidget">
@@ -279,8 +323,7 @@
 		<div class="vernav2 iconmenu">
 			<ul>
 				<!--当li 的 class="current" 时即 该选项被选择-->
-				<li><a href="">教学计划管理</a></li>
-				<li><a href="">修改密码</a></li>
+				<li><a href="n2Detail.html">教学计划管理</a></li>
 				<li><c:if test="${sessionScope.realexistinfo==0}">
 						<a href="writeinfo.jsp">填写详细信息</a>
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
@@ -289,6 +332,9 @@
 				<li><a href="javascript:void(0);" onclick="searchclass()">查看本学期课表</a></li>
 				<li><a href="javascript:void(0);" onclick="createclass()">学生创建课表</a></li>
 				<li><a href="StudentLookGradeController.mvc" class="edit">个人成绩查询</a></li>
+				<li><a href="javascript:void(0);" onclick="chooseclass()">个人选课</a></li>
+				<li><a href="javascript:void(0);" onclick="addvise()">评教</a></li>
+				<li><a href="StudentEXController.mvc" class="edit">学生交流</a></li>
 			</ul>
 			<a class="togglemenu"></a> <br /> <br />
 		</div>
@@ -296,8 +342,8 @@
 
 		<div style="position: absolute;top: 200px;left: 600px	">
 			<form method="post">
-				性别: <input type="radio" id="sigender" name="sigender" value="男">男
-				<input type="radio" id="sigender" name="sigender" value="女">女
+				性别: <input type="radio" id="sigender1" name="sigender" value="男">男
+				<input type="radio" id="sigender2" name="sigender" value="女">女
 				<br /> 民族:<select id="sination" name="sination">
 					<option value="汉族">汉族</option>
 					<option value="苗族">苗族</option>

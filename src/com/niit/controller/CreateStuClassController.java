@@ -3,7 +3,6 @@ package com.niit.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpSession;
 

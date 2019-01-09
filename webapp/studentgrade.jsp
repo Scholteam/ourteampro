@@ -37,6 +37,51 @@
 		})
 	}
 	
+	function addvise() {
+		var asa = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "AddviseController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"asa" : asa,
+			},
+			success : function(data) {
+				if (data == "success") {
+					alert("恭喜您已完成评教，请继续浏览");
+				} else {
+					top.location = "studentaddvisetea.jsp";
+				}
+			}
+		})
+	}
+	
+	function chooseclass(){
+		var asa = '';
+		$.ajax({
+			method : "POST",
+			async : true,
+			url : "SearchChooseClassController.mvc",
+			contentType : "application/x-www-form-urlencoded",
+			data : {
+				"asa" : asa,
+			},
+			success : function(data) {
+				if (data == "success") {
+					top.location = "studentchooseclass.jsp";
+				} else if(data == "noinfo"){
+					alert("请先完善个人信息");
+				} else if(data == "noclass"){
+					alert("请先生成专业课课表");
+				}else{
+					alert("您已选完两门课程");
+				}
+			}
+		})
+	}
+	
+	
 	function searchclass() {
 		var search = '';
 		$.ajax({
@@ -97,7 +142,7 @@
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
 						<a href="searchstuinfo.jsp">查看个人信息</a>
 					</c:if></li>
-							<li><a href="">教学运行公告</a></li>
+							<li><a href="n2Detail.html">教学运行公告</a></li>
 							<li><a href="PeopleSignOutController.mvc">退出</a></li>
 						</ul>
 					</div>
@@ -113,7 +158,7 @@
 		<div class="header">
 			<ul class="headermenu">
 				<li><a href="studentmainpage.jsp"><span class="icon icon-flatscreen"></span>界面</a></li>
-				<li><a href=""><span class="icon icon-pencil"></span>教学通知</a></li>
+				<li><a href="n2Detail.html"><span class="icon icon-pencil"></span>教学通知</a></li>
 			</ul>
 
 			<div class="headerwidget">
@@ -173,7 +218,7 @@
 		<div class="vernav2 iconmenu">
 			<ul>
 				<!--当li 的 class="current" 时即 该选项被选择-->
-				<li><a href="#" class="editor">教学计划管理</a></li>
+				<li><a href="n2Detail.html" class="editor">教学计划管理</a></li>
 				<li><c:if test="${sessionScope.realexistinfo==0}">
 						<a href="writeinfo.jsp">填写详细信息</a>
 					</c:if> <c:if test="${sessionScope.realexistinfo==1}">
@@ -182,6 +227,9 @@
 				<li><a href="javascript:void(0);" onclick="searchclass()">查看本学期课表</a></li>
 				<li><a href="javascript:void(0);" onclick="createclass()">学生创建课表</a></li>
 				<li><a href="StudentLookGradeController.mvc" class="edit">个人成绩查询</a></li>
+				<li><a href="javascript:void(0);" onclick="chooseclass()">个人选课</a></li>
+				<li><a href="javascript:void(0);" onclick="addvise()">评教</a></li>
+				<li><a href="StudentEXController.mvc" class="edit">学生交流</a></li>
 			</ul>
 			<a class="togglemenu"></a> <br /> <br />
 		</div>

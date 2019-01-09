@@ -40,6 +40,7 @@
 						alert("此学号已存在");
 					} else if (data == "notreal") {
 						alert("该学号长度错误");
+						top.location="register.jsp";
 					} else if (data == "notdig"){
 						alert("有非法字符");
 					} else {
